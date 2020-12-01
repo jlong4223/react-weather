@@ -34,10 +34,10 @@ function App () {
     <div className='App'>
       <Map lat={appData.lat} lng={appData.lng} />
       <header className='App-header'>
-    {
-    appData.temp && 
-      <div>{appData.temp}&deg;</div>
-    }
+      {
+        appData.temp && 
+        <div>{appData.temp}&deg;</div>
+      }
     REACT WEATHER
     {appData.icon && 
       <img
