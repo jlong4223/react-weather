@@ -1,7 +1,7 @@
 import {useEffect, useState} from 'react'
 import './App.css';
 import Map from './components/Map/Map';
-
+import {getCurrentLatLng} from './services/geolocation'
 
 function App () {
   
@@ -11,18 +11,19 @@ function App () {
     lng: null
   })
 
+  async function getAppData(){
+    const {lat, lng} = await getCurrentLatLng()
+    setAppData({lat,lng})
+  }
+
   useEffect(()=>{
-    console.log('useEffect in the house')
-  })
+    getAppData()
+  }, [])
   
   return (
     <div className='App'>
-      <Map />
+      <Map lat={appData.lat} lng={appData.lng} />
       <header className='App-header'>REACT WEATHER
-       <button onClick={()=> setAppData({
-         lat: 32.8203525,
-         lng: -97.011731
-       })}>Set Weather Data</button>
       </header>
     </div>
   );
